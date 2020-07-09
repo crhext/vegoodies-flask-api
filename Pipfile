@@ -11,6 +11,8 @@ flask-sqlalchemy = "*"
 flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
 gunicorn = "*"
+boto3 = "*"
+flask-cors = "*"
 
 [requires]
 python_version = "3.8"
