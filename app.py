@@ -4,7 +4,7 @@ from flask_marshmallow import Marshmallow
 import os
 import boto3
 import random
-from config import S3_BUCKET, S3_KEY, S3_SECRET, PSQL_DEV, PSQL_PRD
+from config import S3_BUCKET, S3_KEY, S3_SECRET
 from flask_cors import CORS, cross_origin
 
 ##aws authenticate
@@ -24,13 +24,13 @@ cors = CORS(app, resources={r"*": {"origins": "*"}})
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 ##database
-ENV = 'prod'
+ENV = 'prodfr'
 if ENV == 'dev':
 	app.debug = True
-	app.config['SQLALCHEMY_DATABASE_URI'] = PSQL_DEV
+	app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://chrishext:chris123@localhost/vegoodies'
 else:
 	app.debug = False
-	app.config['SQLALCHEMY_DATABASE_URI'] = PSQL_PRD
+	app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://svhenitdmnzmrh:02d06ab79b88aad28b618849e7e37101d5ce5804c2f4daf3892f8f46aa13fdbb@ec2-34-230-231-71.compute-1.amazonaws.com:5432/d5tckk05rd759p'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 ##init db
